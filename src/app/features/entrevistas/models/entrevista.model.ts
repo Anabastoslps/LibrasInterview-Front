@@ -5,9 +5,11 @@ export interface EntrevistaRequest {
 }
 
 export interface EntrevistaResponse {
-  id: number;
-  entrevistadorId: number;
-  candidatoId: number;
-  dataHora: string;
-  status: string;
+    id: number;
+    entrevistadorId: number;
+    entrevistadorNome: string;
+    candidatoId: number;
+    candidatoNome: string;
+    dataHora: string;
+    status: string;
 }

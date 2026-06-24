@@ -17,7 +17,7 @@
                 <div class="stat-card">
                     <i class="bi bi-calendar-event fs-3"></i>
                     <div>
-                        <h3>4</h3>
+                        <h3>{{ entrevistas.length }}</h3>
                         <p>Próximas entrevistas</p>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                 <div class="stat-card">
                     <i class="bi bi-check2-square fs-3"></i>
                     <div>
-                        <h3>37</h3>
+                        <h3>{{ entrevistas.length }}</h3>
                         <p>Entrevistas realizadas</p>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="stat-card">
                     <i class="bi bi-clock fs-3"></i>
                     <div>
-                        <h3>52h</h3>
+                        <h3>{{ entrevistas.length }}h</h3>
                         <p>Horas de entrevista</p>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                 <div class="stat-card">
                     <i class="bi bi-file-earmark-text fs-2"></i>
                     <div>
-                        <h3>118</h3>
+                        <h3>{{ entrevistas.length }}</h3>
                         <p>Transcrições geradas</p>
                     </div>
                 </div>
@@ -73,50 +73,32 @@
                     </thead>
 
                     <tbody>
+                        @for (entrevista of entrevistas; track entrevista.id) {
                         <tr>
-                            <td>24 Jun 2026</td>
-                            <td>09:00</td>
+                            <td>{{ formatarData(entrevista.dataHora) }}</td>
+                            <td>{{ formatarHora(entrevista.dataHora) }}</td>
                             <td>
-                                <strong>Carlos Mendes</strong>
-                                <small>Dev .NET Pleno</small>
+                                <strong>{{ entrevista.candidatoNome }}</strong>
+                                <small>{{ entrevista.entrevistadorNome }}</small>
                             </td>
-                            <td><span class="badge-status success">Confirmada</span></td>
+                            <td>
+                                <span class="badge-status success">
+                                    {{ entrevista.status }}
+                                </span>
+                            </td>
                             <td class="text-end">
                                 <a routerLink="/sala" class="btn btn-outline-primary btn-sm">
                                     <i class="bi bi-camera-video"></i> Entrar
                                 </a>
                             </td>
                         </tr>
-
+                        } @empty {
                         <tr>
-                            <td>24 Jun 2026</td>
-                            <td>14:30</td>
-                            <td>
-                                <strong>Júlia Rocha</strong>
-                                <small>UX Designer</small>
-                            </td>
-                            <td><span class="badge-status success">Confirmada</span></td>
-                            <td class="text-end">
-                                <a routerLink="/sala" class="btn btn-outline-primary btn-sm">
-                                    <i class="bi bi-camera-video"></i> Entrar
-                                </a>
+                            <td colspan="5" class="text-center py-4">
+                                Nenhuma entrevista agendada.
                             </td>
                         </tr>
-
-                        <tr>
-                            <td>25 Jun 2026</td>
-                            <td>10:00</td>
-                            <td>
-                                <strong>Pedro Alves</strong>
-                                <small>Analista de RH</small>
-                            </td>
-                            <td><span class="badge-status warning">Pendente</span></td>
-                            <td class="text-end">
-                                <a routerLink="/sala" class="btn btn-outline-primary btn-sm">
-                                    <i class="bi bi-camera-video"></i> Entrar
-                                </a>
-                            </td>
-                        </tr>
+                        }
                     </tbody>
                 </table>
             </div>
