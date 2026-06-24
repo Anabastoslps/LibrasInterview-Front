@@ -1,0 +1,33 @@
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Usuários</h2>
+
+        <button class="btn btn-primary">
+            Novo Usuário
+        </button>
+    </div>
+
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (usuario of usuarios; track usuario.id) {
+            <tr>
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.nome }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.tipoUsuario }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
