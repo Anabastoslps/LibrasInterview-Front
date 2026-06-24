@@ -1,1 +1,126 @@
-<p>dashboard works!</p>
+<div class="dashboard-page">
+    <div class="container py-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="page-title">Bem-vindo, Ana</h1>
+                <p class="page-subtitle">Aqui está um resumo das suas entrevistas.</p>
+            </div>
+
+            <a routerLink="/agendar" class="btn btn-primary-custom">
+                + Nova entrevista
+            </a>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-xl-3">
+                <div class="stat-card">
+                    <i class="bi bi-calendar-event fs-3"></i>
+                    <div>
+                        <h3>4</h3>
+                        <p>Próximas entrevistas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-3">
+                <div class="stat-card">
+                    <i class="bi bi-check2-square fs-3"></i>
+                    <div>
+                        <h3>37</h3>
+                        <p>Entrevistas realizadas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-3">
+                <div class="stat-card">
+                    <i class="bi bi-clock fs-3"></i>
+                    <div>
+                        <h3>52h</h3>
+                        <p>Horas de entrevista</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xl-3">
+                <div class="stat-card">
+                    <i class="bi bi-file-earmark-text fs-2"></i>
+                    <div>
+                        <h3>118</h3>
+                        <p>Transcrições geradas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="interview-card mt-4">
+            <div class="card-header-custom">
+                <h2>Próximas entrevistas</h2>
+                <a routerLink="/historico">Ver tudo</a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Horário</th>
+                            <th>Candidato</th>
+                            <th>Status</th>
+                            <th class="text-end">Ação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>24 Jun 2026</td>
+                            <td>09:00</td>
+                            <td>
+                                <strong>Carlos Mendes</strong>
+                                <small>Dev .NET Pleno</small>
+                            </td>
+                            <td><span class="badge-status success">Confirmada</span></td>
+                            <td class="text-end">
+                                <a routerLink="/sala" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-camera-video"></i> Entrar
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>24 Jun 2026</td>
+                            <td>14:30</td>
+                            <td>
+                                <strong>Júlia Rocha</strong>
+                                <small>UX Designer</small>
+                            </td>
+                            <td><span class="badge-status success">Confirmada</span></td>
+                            <td class="text-end">
+                                <a routerLink="/sala" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-camera-video"></i> Entrar
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>25 Jun 2026</td>
+                            <td>10:00</td>
+                            <td>
+                                <strong>Pedro Alves</strong>
+                                <small>Analista de RH</small>
+                            </td>
+                            <td><span class="badge-status warning">Pendente</span></td>
+                            <td class="text-end">
+                                <a routerLink="/sala" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-camera-video"></i> Entrar
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
