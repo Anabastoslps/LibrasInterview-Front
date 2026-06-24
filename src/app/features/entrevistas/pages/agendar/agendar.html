@@ -1,1 +1,121 @@
-<p>agendar works!</p>
+<div class="schedule-page">
+    <div class="container py-4">
+
+        <div class="page-header mb-4">
+            <h1>Agendar entrevista</h1>
+            <p>Crie uma nova sala de entrevista acessível.</p>
+        </div>
+
+        <form class="row g-4">
+
+            <div class="col-lg-8">
+                <div class="form-card">
+
+                    <div class="mb-4">
+                        <label class="form-label">Título da entrevista</label>
+                        <input type="text" class="form-control" placeholder="Ex.: Entrevista técnica — Dev .NET">
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label">Entrevistador</label>
+                            <input type="text" class="form-control" placeholder="Ana Silva">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Candidato</label>
+                            <input type="text" class="form-control" placeholder="Carlos Mendes">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Data</label>
+                            <input type="date" class="form-control">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Hora</label>
+                            <input type="time" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <label class="form-label">Descrição</label>
+                        <textarea class="form-control" rows="4"
+                            placeholder="Adicione detalhes, vaga e instruções para os participantes."></textarea>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="accessibility-card">
+
+                    <div class="mb-4">
+                        <h2>Recursos de acessibilidade</h2>
+                        <p>Ative o que será usado na sala.</p>
+                    </div>
+
+                    <label class="feature-option">
+                        <div class="feature-icon">
+                            <i class="bi bi-hand-index"></i>
+                        </div>
+
+                        <div class="feature-text">
+                            <strong>Avatar de Libras</strong>
+                            <span>Tradução em tempo real por avatar.</span>
+                        </div>
+
+                        <input class="form-check-input" type="checkbox" checked>
+                    </label>
+
+                    <label class="feature-option">
+                        <div class="feature-icon">
+                            <i class="bi bi-badge-cc"></i>
+                        </div>
+
+                        <div class="feature-text">
+                            <strong>Legendas automáticas</strong>
+                            <span>Legendas sincronizadas na chamada.</span>
+                        </div>
+
+                        <input class="form-check-input" type="checkbox" checked>
+                    </label>
+
+                    <label class="feature-option">
+                        <div class="feature-icon">
+                            <i class="bi bi-record-circle"></i>
+                        </div>
+
+                        <div class="feature-text">
+                            <strong>Gravação</strong>
+                            <span>Salve a entrevista para revisão.</span>
+                        </div>
+
+                        <input class="form-check-input" type="checkbox" checked>
+                    </label>
+
+                    <label class="feature-option">
+                        <div class="feature-icon">
+                            <i class="bi bi-stars"></i>
+                        </div>
+
+                        <div class="feature-text">
+                            <strong>Transcrição com IA</strong>
+                            <span>Transcrição completa gerada por IA.</span>
+                        </div>
+
+                        <input class="form-check-input" type="checkbox">
+                    </label>
+
+                </div>
+
+                <button type="button" routerLink="/dashboard" class="btn btn-schedule w-100 mt-4">
+                    <i class="bi bi-calendar-plus"></i>
+                    Agendar entrevista
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

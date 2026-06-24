@@ -1,0 +1,391 @@
+.room-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #111827;
+    color: #ffffff;
+}
+
+.room-header {
+    height: 64px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.room-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    background: #8babf1;
+    color: #1f2937;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.room-title p {
+    margin: 0;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.room-title small {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.recording-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    background: rgba(250, 175, 144, 0.18);
+    color: #faaf90;
+
+    border-radius: 999px;
+    padding: 5px 12px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.recording-badge span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #faaf90;
+}
+
+.room-body {
+    flex: 1;
+    min-height: 0;
+    padding: 12px;
+
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 12px;
+}
+
+.main-area {
+    min-height: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 12px;
+}
+
+.video-grid {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.video-tile {
+    position: relative;
+    border-radius: 18px;
+    background: #1f2937;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-circle {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+
+    background: rgba(217, 228, 255, 0.18);
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.participant-name {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 10px;
+    padding: 6px 10px;
+
+    font-size: 12px;
+}
+
+.participant-name i {
+    color: #8babf1;
+    margin-right: 6px;
+}
+
+.participant-name .muted {
+    color: #faaf90;
+}
+
+.libras-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    background: #8babf1;
+    color: #1f2937;
+
+    border-radius: 10px;
+    padding: 5px 9px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.caption-bar {
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 16px;
+    padding: 12px 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 14px;
+}
+
+.caption-bar i {
+    color: #d9e4ff;
+}
+
+.caption-bar p {
+    margin: 0;
+}
+
+.caption-bar strong {
+    color: #8babf1;
+}
+
+.side-area {
+    min-height: 0;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 12px;
+}
+
+.libras-card,
+.transcript-card {
+    border-radius: 18px;
+    border: 1px solid rgba(217, 228, 255, 0.18);
+    background: #1f2937;
+    overflow: hidden;
+}
+
+.libras-card {
+    background: linear-gradient(180deg, rgba(139, 171, 241, 0.35), #1f2937);
+}
+
+.side-card-title {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 12px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.side-card-title i {
+    color: #8babf1;
+}
+
+.libras-avatar {
+    height: 160px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.libras-avatar-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+    background: rgba(217, 228, 255, 0.22);
+    color: #d9e4ff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 32px;
+}
+
+.libras-avatar small {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.transcript-card {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.transcript-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+}
+
+.transcript-item {
+    margin-bottom: 14px;
+    font-size: 13px;
+}
+
+.transcript-item div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 3px;
+}
+
+.transcript-item span {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.transcript-item p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.transcript-item.interviewer strong {
+    color: #8babf1;
+}
+
+.transcript-item.candidate strong {
+    color: #b3c7f7;
+}
+
+.transcript-item.avatar strong {
+    color: #faaf90;
+}
+
+.chat-input {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px;
+
+    display: flex;
+    gap: 8px;
+}
+
+.chat-input input {
+    flex: 1;
+
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+
+    padding: 8px 10px;
+}
+
+.chat-input input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.chat-input button {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #faaf90;
+    color: #1f2937;
+}
+
+.room-controls {
+    height: 68px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.control-btn {
+    width: 46px;
+    height: 46px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.control-btn.record {
+    background: rgba(250, 175, 144, 0.18);
+    color: #faaf90;
+}
+
+.end-call-btn {
+    height: 46px;
+
+    background: #faaf90;
+    color: #1f2937;
+
+    border-radius: 999px;
+    padding: 0 20px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.end-call-btn:hover {
+    background: #fcc9b5;
+    color: #1f2937;
+}
+
+@media (max-width: 992px) {
+    .room-body {
+        grid-template-columns: 1fr;
+        overflow-y: auto;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+}

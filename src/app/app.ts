@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('libras-interview-web');
+  protected readonly title = signal('libria');
+
+  constructor(private router: Router) {}
+
+  get mostrarNavbar(): boolean {
+    return !this.router.url.startsWith('/sala');
+  }
 }
