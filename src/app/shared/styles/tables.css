@@ -18,3 +18,9 @@
 .app-table tbody tr:hover {
     background: #d9e4ff;
 }
+
+.app-table small {
+    display: block;
+    color: var(--muted);
+    margin-top: 2px;
+}
