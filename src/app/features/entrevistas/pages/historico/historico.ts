@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { EntrevistaResponse } from '../../models/entrevista.model';
 import { EntrevistaService } from '../../services/entrevista.service';
@@ -12,12 +12,19 @@ import { EntrevistaService } from '../../services/entrevista.service';
 export class Historico implements OnInit {
   entrevistas: EntrevistaResponse[] = [];
 
-  constructor(private entrevistaService: EntrevistaService) {}
+  private entrevistaService = inject(EntrevistaService);
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
+    this.carregarEntrevistas();
+  }
+
+  carregarEntrevistas(): void {
     this.entrevistaService.listar().subscribe({
       next: (response) => {
+        console.log('Histórico:', response);
         this.entrevistas = response;
+        this.cdr.detectChanges();
       },
       error: (erro) => {
         console.error('Erro ao buscar histórico', erro);
