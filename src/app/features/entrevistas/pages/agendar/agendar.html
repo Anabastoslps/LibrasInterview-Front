@@ -2,8 +2,8 @@
     <div class="page-container py-4">
 
         <div class="page-header mb-4">
-            <h1>Agendar entrevista</h1>
-            <p>Crie uma nova sala de entrevista acessível.</p>
+            <h1 class="page-title">Agendar entrevista</h1>
+            <p class="page-subtitle">Crie uma nova sala de entrevista acessível.</p>
         </div>
 
         <form class="row g-4" (ngSubmit)="agendarEntrevista()">
@@ -19,13 +19,28 @@
                     <div class="row g-4">
                         <div class="col-md-6">
                             <label class="form-label">Entrevistador</label>
-                            <input type="number" class="form-control" [(ngModel)]="entrevistadorId" name="entrevistadorId">
+                            <select class="form-control" [(ngModel)]="entrevistadorId" name="entrevistadorId">
+                                <option value="">Selecione um entrevistador</option>
 
+                                @for (usuario of entrevistadores; track usuario.id) {
+                                <option [value]="usuario.id">
+                                    {{ usuario.nome }}
+                                </option>
+                                }
+                            </select>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label">Candidato</label>
-                            <input type="number" class="form-control" [(ngModel)]="candidatoId" name="candidatoId">
+                            <select class="form-control" [(ngModel)]="candidatoId" name="candidatoId">
+                                <option value="">Selecione um candidato</option>
+
+                                @for (usuario of candidatos; track usuario.id) {
+                                <option [value]="usuario.id">
+                                    {{ usuario.nome }}
+                                </option>
+                                }
+                            </select>
                         </div>
 
                         <div class="col-md-6">
