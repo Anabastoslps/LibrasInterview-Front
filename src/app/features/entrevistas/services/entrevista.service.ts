@@ -22,5 +22,13 @@ export class EntrevistaService {
     return this.http.post<EntrevistaResponse>(this.apiUrl, request);
   }
 
+  atualizar(id: number, request: EntrevistaRequest) {
+    return this.http.put<EntrevistaResponse>(`${this.apiUrl}/${id}`, request);
+  }
+
+  remover(id: number) {
+      return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    }
+
   
 }

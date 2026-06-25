@@ -11,5 +11,6 @@ export const routes: Routes = [
   { path: 'dashboard', component: Dashboard },
   { path: 'agendar', component: Agendar },
   { path: 'salas/:id', component: Sala },
-  { path: 'historico', component: Historico }
+  { path: 'historico', component: Historico },
+  { path: 'entrevistas/editar/:id', component: Agendar },
 ];

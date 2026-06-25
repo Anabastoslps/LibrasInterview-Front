@@ -7,15 +7,17 @@
                 <p class="page-subtitle">Aqui está um resumo das suas entrevistas.</p>
             </div>
 
-            <a routerLink="/agendar" class="btn btn-primary-custom">
+            <a routerLink="/agendar" class="app-btn app-btn-primary">
                 + Nova entrevista
             </a>
         </div>
 
         <div class="row g-4">
+
             <div class="col-md-6 col-xl-3">
                 <div class="stat-card">
                     <i class="bi bi-calendar-event fs-3"></i>
+
                     <div>
                         <h3>{{ entrevistas.length }}</h3>
                         <p>Próximas entrevistas</p>
@@ -26,6 +28,7 @@
             <div class="col-md-6 col-xl-3">
                 <div class="stat-card">
                     <i class="bi bi-check2-square fs-3"></i>
+
                     <div>
                         <h3>{{ entrevistas.length }}</h3>
                         <p>Entrevistas realizadas</p>
@@ -36,6 +39,7 @@
             <div class="col-md-6 col-xl-3">
                 <div class="stat-card">
                     <i class="bi bi-clock fs-3"></i>
+
                     <div>
                         <h3>{{ entrevistas.length }}h</h3>
                         <p>Horas de entrevista</p>
@@ -46,62 +50,107 @@
             <div class="col-md-6 col-xl-3">
                 <div class="stat-card">
                     <i class="bi bi-file-earmark-text fs-2"></i>
+
                     <div>
                         <h3>{{ entrevistas.length }}</h3>
                         <p>Transcrições geradas</p>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div class="interview-card mt-4">
+
             <div class="card-header-custom">
+
                 <h2>Próximas entrevistas</h2>
-                <a routerLink="/historico">Ver tudo</a>
+
+                <a routerLink="/historico">
+                    Ver tudo
+                </a>
+
             </div>
 
             <div class="table-responsive">
-            <table class="table app-table align-middle mb-0">
+
+                <table class="table app-table align-middle mb-0">
+
                     <thead>
                         <tr>
                             <th>Data</th>
                             <th>Horário</th>
                             <th>Candidato</th>
                             <th>Status</th>
-                            <th class="text-end">Ação</th>
+                            <th class="text-end">Ações</th>
                         </tr>
                     </thead>
 
                     <tbody>
+
                         @for (entrevista of entrevistas; track entrevista.id) {
+
                         <tr>
+
                             <td>{{ formatarData(entrevista.dataHora) }}</td>
+
                             <td>{{ formatarHora(entrevista.dataHora) }}</td>
+
                             <td>
                                 <strong>{{ entrevista.candidatoNome }}</strong>
                                 <small>{{ entrevista.entrevistadorNome }}</small>
                             </td>
+
                             <td>
                                 <span class="badge-status success">
                                     {{ entrevista.status }}
                                 </span>
                             </td>
-                            <td class="text-end">
-                                <a [routerLink]="['/salas', entrevista.id]" class="btn btn-outline-primary btn-sm">
-                                    <i class="bi bi-camera-video"></i> Entrar
-                                </a>
+
+                            <td>
+
+                                <div class="app-actions">
+
+                                    <a [routerLink]="['/salas', entrevista.id]"
+                                        class="app-btn app-btn-primary app-btn-sm">
+
+                                        <i class="bi bi-camera-video"></i>
+                                        Entrar
+
+                                    </a>
+
+                                    <a [routerLink]="['/entrevistas/editar', entrevista.id]"
+                                        class="app-btn app-btn-secondary app-btn-sm">
+
+                                        <i class="bi bi-pencil"></i>
+                                        Editar
+
+                                    </a>
+
+                                </div>
+
                             </td>
+
                         </tr>
+
                         } @empty {
+
                         <tr>
+
                             <td colspan="5" class="text-center py-4">
                                 Nenhuma entrevista agendada.
                             </td>
+
                         </tr>
+
                         }
+
                     </tbody>
+
                 </table>
+
             </div>
+
         </div>
 
     </div>

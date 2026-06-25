@@ -6,7 +6,7 @@
             <p class="page-subtitle">Crie uma nova sala de entrevista acessível.</p>
         </div>
 
-        <form class="row g-4" (ngSubmit)="agendarEntrevista()">
+        <form class="row g-4" (ngSubmit)="salvarEntrevista()">
 
             <div class="col-lg-8">
                 <div class="form-card">
@@ -127,7 +127,8 @@
 
                 <button type="submit" class="btn btn-schedule w-100 mt-4">
                     <i class="bi bi-calendar-plus"></i>
-                    Agendar entrevista
+                
+                    {{ modoEdicao ? 'Salvar alterações' : 'Agendar entrevista' }}
                 </button>
             </div>
 
