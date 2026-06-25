@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Sidebar } from './shared/components/sidebar/sidebar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, Sidebar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -12,7 +13,10 @@ export class App {
 
   constructor(private router: Router) {}
 
-  get mostrarNavbar(): boolean {
-    return !this.router.url.startsWith('/sala');
+  get mostrarMenu(): boolean {
+    const url = this.router.url;
+
+    return !url.startsWith('/login')
+      && !url.startsWith('/salas');
   }
 }

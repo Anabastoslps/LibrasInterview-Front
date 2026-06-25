@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@import './app/shared/styles/buttons.css';
+@import './app/shared/styles/cards.css';
+@import './app/shared/styles/forms.css';
+@import './app/shared/styles/tables.css';
+@import './app/shared/styles/typography.css';
+
 :root {
     --primary: #8babf1;
     --primary-light: #d9e4ff;
@@ -18,4 +24,21 @@ body {
     font-family: 'Inter', sans-serif;
     background: var(--background);
     color: var(--text);
+}
+
+.page-container {
+    width: 100%;
+    max-width: none;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+main.com-sidebar {
+    margin-left: 260px;
+    min-height: 100vh;
+    transition: margin-left 0.25s ease;
+}
+
+body.sidebar-collapsed main.com-sidebar {
+    margin-left: 72px;
 }

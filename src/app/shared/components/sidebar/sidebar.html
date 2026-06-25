@@ -1,0 +1,38 @@
+<aside class="sidebar" [class.collapsed]="recolhida">
+    <div class="sidebar-brand">
+        <div class="brand-icon">
+            <i class="bi bi-hand-index"></i>
+        </div>
+
+        @if (!recolhida) {
+        <span>Libria</span>
+        }
+
+        <button class="toggle-btn" (click)="alternarSidebar()">
+            <i class="bi" [class.bi-chevron-left]="!recolhida" [class.bi-chevron-right]="recolhida"></i>
+        </button>
+    </div>
+
+    <nav class="sidebar-nav">
+        <a routerLink="/dashboard" routerLinkActive="active" title="Dashboard">
+            <i class="bi bi-grid"></i>
+            @if (!recolhida) {
+            <span>Dashboard</span>
+            }
+        </a>
+
+        <a routerLink="/agendar" routerLinkActive="active" title="Agendar">
+            <i class="bi bi-calendar-plus"></i>
+            @if (!recolhida) {
+            <span>Agendar</span>
+            }
+        </a>
+
+        <a routerLink="/historico" routerLinkActive="active" title="Histórico">
+            <i class="bi bi-clock-history"></i>
+            @if (!recolhida) {
+            <span>Histórico</span>
+            }
+        </a>
+    </nav>
+</aside>

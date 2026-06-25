@@ -1,13 +1,7 @@
-@if (mostrarNavbar) {
-<nav class="navbar navbar-expand-lg bg-white border-bottom">
-  <div class="container">
-    <a class="navbar-brand fw-bold" routerLink="/">
-      Libria
-    </a>
-  </div>
-</nav>
+@if (mostrarMenu) {
+<app-sidebar></app-sidebar>
 }
 
-<main>
+<main [class.com-sidebar]="mostrarMenu">
   <router-outlet></router-outlet>
 </main>

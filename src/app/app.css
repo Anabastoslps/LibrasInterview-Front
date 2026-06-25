@@ -1,0 +1,9 @@
+main.com-sidebar {
+    margin-left: 260px;
+    min-height: 100vh;
+    transition: margin-left 0.25s ease;
+}
+
+body.sidebar-collapsed main.com-sidebar {
+    margin-left: 72px;
+}

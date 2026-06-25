@@ -1,0 +1,129 @@
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    background: linear-gradient(180deg, #8babf1, #6f8fe0);
+    border-right: 1px solid #b3c7f7;
+
+    padding: 24px 16px;
+    transition: width .25s ease;
+    overflow: hidden;
+}
+
+.sidebar.collapsed {
+    width: 72px;
+    padding: 24px 12px;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 20px;
+    font-weight: 800;
+    color: #1f2937;
+
+    margin-bottom: 40px;
+}
+
+.sidebar.collapsed .sidebar-brand {
+    justify-content: center;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.45);
+    color: #1f2937;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.toggle-btn {
+    margin-left: auto;
+
+    width: 28px;
+    height: 28px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.35);
+    color: #1f2937;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar.collapsed .toggle-btn {
+    position: absolute;
+    right: -10px;
+    top: 28px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(31, 41, 55, .16);
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px 16px;
+    border-radius: 14px;
+
+    color: #1f2937;
+    text-decoration: none;
+    font-weight: 700;
+
+    transition: all .2s ease;
+    white-space: nowrap;
+}
+
+.sidebar.collapsed .sidebar-nav a {
+    justify-content: center;
+    padding: 14px 0;
+}
+
+.sidebar-nav a i {
+    font-size: 18px;
+    width: 22px;
+    text-align: center;
+}
+
+.sidebar-nav a:hover {
+    background: rgba(255, 255, 255, 0.35);
+    color: #111827;
+}
+
+.sidebar-nav a.active {
+    background: #ffffff;
+    color: #1f2937;
+
+    box-shadow: 0 8px 22px rgba(31, 41, 55, .16);
+}
+
+.sidebar span {
+    transition: opacity .2s ease;
+}
+
+.sidebar.collapsed span {
+    opacity: 0;
+}

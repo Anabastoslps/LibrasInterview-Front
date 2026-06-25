@@ -1,0 +1,20 @@
+.app-table th,
+.app-table td {
+    padding: 14px 22px;
+    vertical-align: middle;
+}
+
+.app-table th {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.app-table tbody tr {
+    transition: .2s;
+}
+
+.app-table tbody tr:hover {
+    background: #d9e4ff;
+}
