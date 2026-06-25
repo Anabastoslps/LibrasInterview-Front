@@ -1,15 +1,29 @@
 <div class="room-page">
 
     <header class="room-header">
+
         <div class="room-title">
+
             <span class="brand-icon">
                 <i class="bi bi-hand-index"></i>
             </span>
 
             <div>
-                <p>Entrevista técnica — Dev .NET</p>
-                <small>Entrevista #123 · 2 participantes</small>
+
+                <h5 class="mb-0">
+                    {{ entrevista?.entrevistadorNome }}
+                    ×
+                    {{ entrevista?.candidatoNome }}
+                </h5>
+
+                <small>
+                    Entrevista #{{ entrevista?.id }}
+                    •
+                    {{ entrevista?.status }}
+                </small>
+
             </div>
+
         </div>
 
         @if (recording) {
@@ -18,6 +32,7 @@
             Gravando
         </span>
         }
+
     </header>
 
     <main class="room-body">
@@ -25,36 +40,50 @@
         <section class="main-area">
 
             <div class="video-grid">
+
                 <div class="video-tile">
-                    <div class="avatar-circle">AS</div>
+
+                    <div class="avatar-circle">
+                        {{ obterIniciais(entrevista?.entrevistadorNome) }}
+                    </div>
 
                     <div class="participant-name">
                         <i class="bi bi-mic-fill"></i>
-                        Ana Silva (Entrevistadora)
+                        {{ entrevista?.entrevistadorNome }} (Entrevistador)
                     </div>
+
                 </div>
 
                 <div class="video-tile">
-                    <div class="avatar-circle">CM</div>
+
+                    <div class="avatar-circle">
+                        {{ obterIniciais(entrevista?.candidatoNome) }}
+                    </div>
 
                     <div class="participant-name">
+
                         @if (mic) {
                         <i class="bi bi-mic-fill"></i>
                         } @else {
                         <i class="bi bi-mic-mute-fill muted"></i>
                         }
-                        Carlos Mendes (Candidato)
+
+                        {{ entrevista?.candidatoNome }} (Candidato)
+
                     </div>
 
                     <div class="libras-tag">
                         <i class="bi bi-hand-index"></i>
                         Libras
                     </div>
+
                 </div>
+
             </div>
 
             <div class="caption-bar">
                 <i class="bi bi-badge-cc"></i>
+
                 <p>
                     <strong>Candidato:</strong>
                     Tenho três anos de experiência com .NET e Angular.
@@ -66,32 +95,39 @@
         <aside class="side-area">
 
             <div class="libras-card">
+
                 <div class="side-card-title">
                     <i class="bi bi-hand-index"></i>
                     Avatar de Libras
                 </div>
 
                 <div class="libras-avatar">
+
                     <div class="libras-avatar-icon">
                         <i class="bi bi-hand-index"></i>
                     </div>
 
                     <small>Executando sinais em tempo real…</small>
+
                 </div>
+
             </div>
 
             <div class="transcript-card">
+
                 <div class="side-card-title">
                     <i class="bi bi-chat-dots"></i>
                     Transcrição em tempo real
                 </div>
 
                 <div class="transcript-list">
+
                     <div class="transcript-item interviewer">
                         <div>
                             <strong>Entrevistador</strong>
                             <span>00:00</span>
                         </div>
+
                         <p>Olá! Fale um pouco sobre a sua experiência.</p>
                     </div>
 
@@ -100,6 +136,7 @@
                             <strong>Candidato</strong>
                             <span>00:15</span>
                         </div>
+
                         <p>Tenho três anos de experiência com .NET e Angular.</p>
                     </div>
 
@@ -108,6 +145,7 @@
                             <strong>Avatar Libras</strong>
                             <span>00:30</span>
                         </div>
+
                         <p>Tradução em Libras sendo executada pelo avatar.</p>
                     </div>
 
@@ -116,17 +154,22 @@
                             <strong>Entrevistador</strong>
                             <span>00:42</span>
                         </div>
+
                         <p>Ótimo. Pode descrever um projeto recente?</p>
                     </div>
+
                 </div>
 
                 <div class="chat-input">
+
                     <input type="text" placeholder="Enviar mensagem…" />
 
                     <button>
                         <i class="bi bi-send"></i>
                     </button>
+
                 </div>
+
             </div>
 
         </aside>
@@ -136,19 +179,23 @@
     <footer class="room-controls">
 
         <button class="control-btn" (click)="toggleMic()">
+
             @if (mic) {
             <i class="bi bi-mic-fill"></i>
             } @else {
             <i class="bi bi-mic-mute-fill"></i>
             }
+
         </button>
 
         <button class="control-btn" (click)="toggleCam()">
+
             @if (cam) {
             <i class="bi bi-camera-video-fill"></i>
             } @else {
             <i class="bi bi-camera-video-off-fill"></i>
             }
+
         </button>
 
         <button class="control-btn">
@@ -156,7 +203,9 @@
         </button>
 
         <button class="control-btn record" (click)="toggleRecording()">
+
             <i class="bi bi-record-circle"></i>
+
         </button>
 
         <button class="control-btn">
@@ -164,8 +213,10 @@
         </button>
 
         <a routerLink="/dashboard" class="end-call-btn">
+
             <i class="bi bi-telephone-x-fill"></i>
             Encerrar
+
         </a>
 
     </footer>

@@ -14,7 +14,13 @@ export class EntrevistaService {
     return this.http.get<EntrevistaResponse[]>(this.apiUrl);
   }
 
+  obterPorId(id: number) {
+  return this.http.get<EntrevistaResponse>(`${this.apiUrl}/${id}`);
+  }
+
   criar(request: EntrevistaRequest) {
     return this.http.post<EntrevistaResponse>(this.apiUrl, request);
   }
+
+  
 }

@@ -10,6 +10,6 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'dashboard', component: Dashboard },
   { path: 'agendar', component: Agendar },
-  { path: 'sala', component: Sala },
+  { path: 'salas/:id', component: Sala },
   { path: 'historico', component: Historico }
 ];

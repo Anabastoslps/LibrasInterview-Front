@@ -7,8 +7,11 @@
         </div>
 
         <div class="history-card">
+
             <div class="table-responsive">
+
                 <table class="table align-middle mb-0">
+
                     <thead>
                         <tr>
                             <th>Título</th>
@@ -20,12 +23,29 @@
                     </thead>
 
                     <tbody>
+
+                        @for (entrevista of entrevistas; track entrevista.id) {
+
                         <tr>
-                            <td><strong>Entrevista técnica — Dev .NET</strong></td>
-                            <td>20 Jun 2026</td>
-                            <td>Ana, Carlos</td>
-                            <td>42 min</td>
+
+                            <td>
+                                <strong>Entrevista #{{ entrevista.id }}</strong>
+                            </td>
+
+                            <td>
+                                {{ formatarData(entrevista.dataHora) }}
+                            </td>
+
+                            <td>
+                                {{ entrevista.entrevistadorNome }}
+                                ×
+                                {{ entrevista.candidatoNome }}
+                            </td>
+
+                            <td>--</td>
+
                             <td class="text-end">
+
                                 <button class="btn-action">
                                     <i class="bi bi-file-earmark-text"></i>
                                     Transcrição
@@ -37,63 +57,43 @@
                                 </button>
 
                                 <button class="btn-export" aria-label="Exportar PDF">
+
                                     <i class="bi bi-download"></i>
+
                                 </button>
+
                             </td>
+
                         </tr>
+
+                        } @empty {
 
                         <tr>
-                            <td><strong>Entrevista UX Designer</strong></td>
-                            <td>18 Jun 2026</td>
-                            <td>Ana, Júlia</td>
-                            <td>35 min</td>
-                            <td class="text-end">
-                                <button class="btn-action">
-                                    <i class="bi bi-file-earmark-text"></i>
-                                    Transcrição
-                                </button>
 
-                                <button class="btn-action">
-                                    <i class="bi bi-play-circle"></i>
-                                    Gravação
-                                </button>
+                            <td colspan="5" class="text-center py-4">
 
-                                <button class="btn-export" aria-label="Exportar PDF">
-                                    <i class="bi bi-download"></i>
-                                </button>
+                                Nenhuma entrevista encontrada.
+
                             </td>
+
                         </tr>
 
-                        <tr>
-                            <td><strong>Entrevista Analista de RH</strong></td>
-                            <td>15 Jun 2026</td>
-                            <td>Ana, Pedro</td>
-                            <td>28 min</td>
-                            <td class="text-end">
-                                <button class="btn-action">
-                                    <i class="bi bi-file-earmark-text"></i>
-                                    Transcrição
-                                </button>
+                        }
 
-                                <button class="btn-action">
-                                    <i class="bi bi-play-circle"></i>
-                                    Gravação
-                                </button>
-
-                                <button class="btn-export" aria-label="Exportar PDF">
-                                    <i class="bi bi-download"></i>
-                                </button>
-                            </td>
-                        </tr>
                     </tbody>
+
                 </table>
+
             </div>
 
             <div class="history-footer">
+
                 <a routerLink="/dashboard">
                     Voltar ao dashboard
                 </a>
+
             </div>
+
         </div>
 
     </div>
