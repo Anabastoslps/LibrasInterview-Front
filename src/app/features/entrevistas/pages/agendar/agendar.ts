@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from '../../../usuarios/models/usuario.model';
@@ -29,7 +29,8 @@ export class Agendar implements OnInit {
     private entrevistaService: EntrevistaService,
     private usuarioService: UsuarioService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -70,6 +71,8 @@ export class Agendar implements OnInit {
 
         this.data = dataHora.toISOString().substring(0, 10);
         this.hora = dataHora.toTimeString().substring(0, 5);
+
+        this.cdr.detectChanges();
       },
       error: (erro) => {
         console.error('Erro ao buscar entrevista', erro);
