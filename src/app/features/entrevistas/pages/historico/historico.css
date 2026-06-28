@@ -1,64 +1,12 @@
-.history-card {
-    background: var(--card);
-    border: 1px solid #d9e4ff;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(139, 171, 241, 0.18);
+.history-page {
+    min-height: 100vh;
+    background: var(--background);
 }
 
-.history-card .table th,
-.history-card .table td {
-    padding: 14px 22px;
-    vertical-align: middle;
+.history-page .page-header {
+    margin-bottom: 24px;
 }
 
-.history-card .table th {
-    font-size: 12px;
+.reuniao-titulo {
     text-transform: uppercase;
-    color: var(--muted);
-}
-
-.history-card .table td {
-    color: var(--text);
-}
-
-.history-card .table tbody tr:hover {
-    background: #d9e4ff;
-}
-
-.history-card th:last-child,
-.history-card td:last-child {
-    width: 260px;
-    white-space: nowrap;
-}
-
-.btn-action {
-    border: 1px solid #8babf1;
-    background: #d9e4ff;
-    color: var(--text);
-    border-radius: 999px;
-    padding: 4px 10px;
-    font-size: 12px;
-    font-weight: 700;
-    margin-left: 6px;
-}
-
-.btn-export {
-    border: none;
-    background: #fcc9b5;
-    color: var(--text);
-    border-radius: 999px;
-    padding: 4px 9px;
-    margin-left: 6px;
-}
-
-.history-footer {
-    border-top: 1px solid #d9e4ff;
-    padding: 14px 20px;
-}
-
-.history-footer a {
-    color: #8babf1;
-    font-weight: 700;
-    text-decoration: none;
 }

@@ -28,7 +28,7 @@ export class EntrevistaService {
 
   remover(id: number) {
       return this.http.delete<void>(`${this.apiUrl}/${id}`);
-    }
+  }
 
   
 }

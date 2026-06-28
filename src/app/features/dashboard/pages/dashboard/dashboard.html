@@ -4,11 +4,11 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
                 <h1 class="page-title">Bem-vindo, Ana</h1>
-                <p class="page-subtitle">Aqui está um resumo das suas entrevistas.</p>
+                <p class="page-subtitle">Aqui está um resumo das suas Reuniões.</p>
             </div>
 
             <a routerLink="/agendar" class="app-btn app-btn-primary">
-                + Nova entrevista
+                + Nova Reunião
             </a>
         </div>
 
@@ -19,8 +19,8 @@
                     <i class="bi bi-calendar-event fs-3"></i>
 
                     <div>
-                        <h3>{{ entrevistas.length }}</h3>
-                        <p>Próximas entrevistas</p>
+                        <h3>{{ proximasEntrevistas }}</h3>
+                        <p>Próximas Reuniões</p>
                     </div>
                 </div>
             </div>
@@ -30,8 +30,8 @@
                     <i class="bi bi-check2-square fs-3"></i>
 
                     <div>
-                        <h3>{{ entrevistas.length }}</h3>
-                        <p>Entrevistas realizadas</p>
+                        <h3>{{ entrevistasRealizadas }}</h3>
+                        <p>Reuniões realizadas</p>
                     </div>
                 </div>
             </div>
@@ -41,8 +41,8 @@
                     <i class="bi bi-clock fs-3"></i>
 
                     <div>
-                        <h3>{{ entrevistas.length }}h</h3>
-                        <p>Horas de entrevista</p>
+                        <h3>{{ horasEntrevistas }}h</h3>
+                        <p>Horas de Reunião</p>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     <i class="bi bi-file-earmark-text fs-2"></i>
 
                     <div>
-                        <h3>{{ entrevistas.length }}</h3>
+                        <h3>{{ transcricoes }}</h3>
                         <p>Transcrições geradas</p>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
 
             <div class="card-header-custom">
 
-                <h2>Próximas entrevistas</h2>
+                <h2>Próximas Reuniões</h2>
 
                 <a routerLink="/historico">
                     Ver tudo
@@ -82,13 +82,14 @@
                             <th>Horário</th>
                             <th>Candidato</th>
                             <th>Status</th>
+                            <th class="text-center">Detalhes</th>
                             <th class="text-end">Ações</th>
                         </tr>
                     </thead>
 
                     <tbody>
 
-                        @for (entrevista of entrevistas; track entrevista.id) {
+                        @for (entrevista of entrevistasFuturas(); track entrevista.id) {
 
                         <tr>
 
@@ -105,6 +106,14 @@
                                 <span class="badge-status success">
                                     {{ entrevista.status }}
                                 </span>
+                            </td>
+
+                            <td class="text-center">
+                                <button type="button" class="details-btn" (click)="abrirDetalhes(entrevista)" title="Ver detalhes">
+                            
+                                    <i class="bi bi-info-circle"></i>
+                            
+                                </button>
                             </td>
 
                             <td>
@@ -127,6 +136,13 @@
 
                                     </a>
 
+                                    <button type="button" class="app-btn app-btn-danger app-btn-sm" (click)="excluirEntrevista(entrevista.id)">
+                                    
+                                        <i class="bi bi-trash"></i>
+                                        Excluir
+                                    
+                                    </button>
+
                                 </div>
 
                             </td>
@@ -137,8 +153,8 @@
 
                         <tr>
 
-                            <td colspan="5" class="text-center py-4">
-                                Nenhuma entrevista agendada.
+                            <td colspan="6" class="text-center py-4">
+                                Nenhuma reunião agendada.
                             </td>
 
                         </tr>
@@ -154,4 +170,70 @@
         </div>
 
     </div>
+    @if (entrevistaSelecionada) {
+    <div class="modal-backdrop-custom">
+    
+        <div class="details-modal">
+    
+            <button type="button" class="modal-close-btn" (click)="fecharDetalhes()">
+    
+                <i class="bi bi-x-lg"></i>
+    
+            </button>
+    
+            <h2>{{ entrevistaSelecionada.titulo || 'Reunião' }}</h2>
+    
+            <p class="modal-date">
+                {{ formatarData(entrevistaSelecionada.dataHora) }}
+                às
+                {{ formatarHora(entrevistaSelecionada.dataHora) }}
+                •
+                {{ entrevistaSelecionada.status }}
+            </p>
+    
+            <div class="modal-grid">
+                <div>
+                    <span>Entrevistador</span>
+                    <strong>{{ entrevistaSelecionada.entrevistadorNome }}</strong>
+                </div>
+    
+                <div>
+                    <span>Candidato</span>
+                    <strong>{{ entrevistaSelecionada.candidatoNome }}</strong>
+                </div>
+            </div>
+    
+            <div class="modal-section">
+                <span>Descrição</span>
+    
+                <p>
+                    {{ entrevistaSelecionada.descricao || 'Nenhuma descrição informada.' }}
+                </p>
+            </div>
+    
+            <div class="modal-section">
+                <span>Recursos de acessibilidade</span>
+    
+                <div class="accessibility-tags">
+                    <span>
+                        <i class="bi bi-hand-index"></i>
+                        Avatar de Libras
+                    </span>
+    
+                    <span>
+                        <i class="bi bi-badge-cc"></i>
+                        Legendas automáticas
+                    </span>
+    
+                    <span>
+                        <i class="bi bi-record-circle"></i>
+                        Gravação
+                    </span>
+                </div>
+            </div>
+    
+        </div>
+    
+    </div>
+    }
 </div>

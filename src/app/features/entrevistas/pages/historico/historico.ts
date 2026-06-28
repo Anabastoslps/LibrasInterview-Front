@@ -35,4 +35,27 @@ export class Historico implements OnInit {
   formatarData(dataHora: string): string {
     return new Date(dataHora).toLocaleDateString('pt-BR');
   }
+
+  entrevistasRealizadas(): EntrevistaResponse[] {
+    const agora = new Date();
+
+    return this.entrevistas.filter(
+      entrevista => new Date(entrevista.dataHora) < agora
+    );
+  }
+
+  obterStatusReuniao(dataHora: string, status: string): string {
+    const agora = new Date();
+    const dataReuniao = new Date(dataHora);
+
+    if (status === 'Cancelada') {
+      return 'Cancelada';
+    }
+
+    if (dataReuniao < agora) {
+      return 'Finalizada';
+    }
+
+    return 'Agendada';
+  }
 }

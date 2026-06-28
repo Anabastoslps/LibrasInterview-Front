@@ -2,68 +2,139 @@
     <div class="page-container py-4">
 
         <div class="page-header mb-4">
-            <h1 class="page-title">Agendar entrevista</h1>
-            <p class="page-subtitle">Crie uma nova sala de entrevista acessível.</p>
+            <h1 class="page-title">
+                {{ modoEdicao ? 'Editar Reunião' : 'Agendar Reunião' }}
+            </h1>
+
+            <p class="page-subtitle">
+                {{ modoEdicao
+                ? 'Atualize os dados da reunião.'
+                : 'Crie uma nova sala de reunião acessível.' }}
+            </p>
         </div>
+
+        @if (mensagemErro) {
+        <div class="form-error-alert">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            {{ mensagemErro }}
+        </div>
+        }
 
         <form class="row g-4" (ngSubmit)="salvarEntrevista()">
 
             <div class="col-lg-8">
+
                 <div class="form-card">
 
                     <div class="mb-4">
-                        <label class="form-label">Título da entrevista</label>
-                        <input type="text" class="form-control" placeholder="Ex.: Entrevista técnica — Dev .NET">
+                        <label class="form-label">
+                            Título da Reunião
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="text" class="form-control" [class.is-invalid]="formularioEnviado && !titulo"
+                            placeholder="Ex.: Entrevista técnica — Dev .NET" [(ngModel)]="titulo" name="titulo">
                     </div>
 
                     <div class="row g-4">
+
                         <div class="col-md-6">
-                            <label class="form-label">Entrevistador</label>
-                            <select class="form-control" [(ngModel)]="entrevistadorId" name="entrevistadorId">
-                                <option value="">Selecione um entrevistador</option>
+
+                            <label class="form-label">
+                                Entrevistador
+                                <span class="required">*</span>
+                            </label>
+
+                            <select class="form-control" [class.is-invalid]="formularioEnviado && !entrevistadorId"
+                                [(ngModel)]="entrevistadorId" name="entrevistadorId">
+
+                                <option value="">
+                                    Selecione um entrevistador
+                                </option>
 
                                 @for (usuario of entrevistadores; track usuario.id) {
+
                                 <option [value]="usuario.id">
                                     {{ usuario.nome }}
                                 </option>
+
                                 }
+
                             </select>
+
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Candidato</label>
-                            <select class="form-control" [(ngModel)]="candidatoId" name="candidatoId">
-                                <option value="">Selecione um candidato</option>
+
+                            <label class="form-label">
+                                Candidato
+                                <span class="required">*</span>
+                            </label>
+
+                            <select class="form-control" [class.is-invalid]="formularioEnviado && !candidatoId"
+                                [(ngModel)]="candidatoId" name="candidatoId">
+
+                                <option value="">
+                                    Selecione um candidato
+                                </option>
 
                                 @for (usuario of candidatos; track usuario.id) {
+
                                 <option [value]="usuario.id">
                                     {{ usuario.nome }}
                                 </option>
+
                                 }
+
                             </select>
+
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Data</label>
-                            <input type="date" class="form-control" [(ngModel)]="data" name="data">
+
+                            <label class="form-label">
+                                Data
+                                <span class="required">*</span>
+                            </label>
+
+                            <input type="date" class="form-control" [class.is-invalid]="formularioEnviado && !data"
+                                [(ngModel)]="data" name="data">
+
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Hora</label>
-                            <input type="time" class="form-control" [(ngModel)]="hora" name="hora">
+
+                            <label class="form-label">
+                                Hora
+                                <span class="required">*</span>
+                            </label>
+
+                            <input type="time" class="form-control" [class.is-invalid]="formularioEnviado && !hora"
+                                [(ngModel)]="hora" name="hora">
+
                         </div>
+
                     </div>
 
                     <div class="mt-4">
-                        <label class="form-label">Descrição</label>
+
+                        <label class="form-label">
+                            Descrição
+                        </label>
+
                         <textarea class="form-control" rows="4"
-                            placeholder="Adicione detalhes, vaga e instruções para os participantes."></textarea>
+                            placeholder="Adicione detalhes, vaga e instruções para os participantes."
+                            [(ngModel)]="descricao" name="descricao">
+                        </textarea>
+
                     </div>
 
                 </div>
+
             </div>
 
             <div class="col-lg-4">
+
                 <div class="accessibility-card">
 
                     <div class="mb-4">
@@ -72,6 +143,7 @@
                     </div>
 
                     <label class="feature-option">
+
                         <div class="feature-icon">
                             <i class="bi bi-hand-index"></i>
                         </div>
@@ -82,9 +154,11 @@
                         </div>
 
                         <input class="form-check-input" type="checkbox" checked>
+
                     </label>
 
                     <label class="feature-option">
+
                         <div class="feature-icon">
                             <i class="bi bi-badge-cc"></i>
                         </div>
@@ -95,22 +169,26 @@
                         </div>
 
                         <input class="form-check-input" type="checkbox" checked>
+
                     </label>
 
                     <label class="feature-option">
+
                         <div class="feature-icon">
                             <i class="bi bi-record-circle"></i>
                         </div>
 
                         <div class="feature-text">
                             <strong>Gravação</strong>
-                            <span>Salve a entrevista para revisão.</span>
+                            <span>Salve a reunião para revisão.</span>
                         </div>
 
                         <input class="form-check-input" type="checkbox" checked>
+
                     </label>
 
                     <label class="feature-option">
+
                         <div class="feature-icon">
                             <i class="bi bi-stars"></i>
                         </div>
@@ -121,15 +199,19 @@
                         </div>
 
                         <input class="form-check-input" type="checkbox">
+
                     </label>
 
                 </div>
 
-                <button type="submit" class="btn btn-schedule w-100 mt-4">
+                <button type="submit" class="app-btn app-btn-primary w-100 mt-4">
+
                     <i class="bi bi-calendar-plus"></i>
-                
-                    {{ modoEdicao ? 'Salvar alterações' : 'Agendar entrevista' }}
+
+                    {{ modoEdicao ? 'Salvar alterações' : 'Agendar reunião' }}
+
                 </button>
+
             </div>
 
         </form>

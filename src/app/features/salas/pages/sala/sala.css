@@ -79,7 +79,7 @@
 .main-area {
     min-height: 0;
     display: grid;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 1fr auto auto;
     gap: 12px;
 }
 
@@ -388,4 +388,28 @@
     .video-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.room-description {
+    background: rgba(139, 171, 241, 0.12);
+    border: 1px solid rgba(139, 171, 241, 0.25);
+    border-radius: 16px;
+    padding: 12px 16px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.room-description i {
+    color: #8babf1;
+    margin-top: 2px;
+}
+
+.room-description p {
+    margin: 0;
+    line-height: 1.4;
 }

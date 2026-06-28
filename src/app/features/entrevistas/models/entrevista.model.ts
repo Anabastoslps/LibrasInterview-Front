@@ -1,4 +1,6 @@
 export interface EntrevistaRequest {
+  titulo: string;
+  descricao: string;
   entrevistadorId: number;
   candidatoId: number;
   dataHora: string;
@@ -12,4 +14,6 @@ export interface EntrevistaResponse {
     candidatoNome: string;
     dataHora: string;
     status: string;
+    titulo: string;
+    descricao?: string;
 }

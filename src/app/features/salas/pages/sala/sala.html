@@ -10,17 +10,17 @@
 
             <div>
 
-                <h5 class="mb-0">
-                    {{ entrevista?.entrevistadorNome }}
-                    ×
-                    {{ entrevista?.candidatoNome }}
-                </h5>
-
-                <small>
-                    Entrevista #{{ entrevista?.id }}
-                    •
-                    {{ entrevista?.status }}
-                </small>
+            <h5 class="mb-0">
+                {{ entrevista?.titulo || 'Sala da reunião' }}
+            </h5>
+            
+            <small>
+                {{ entrevista?.entrevistadorNome }}
+                ×
+                {{ entrevista?.candidatoNome }}
+                •
+                {{ entrevista?.status }}
+            </small>
 
             </div>
 
@@ -81,12 +81,11 @@
 
             </div>
 
-            <div class="caption-bar">
-                <i class="bi bi-badge-cc"></i>
-
+            <div class="room-description">
+                <i class="bi bi-info-circle"></i>
+            
                 <p>
-                    <strong>Candidato:</strong>
-                    Tenho três anos de experiência com .NET e Angular.
+                    {{ entrevista?.descricao || 'Nenhuma descrição informada para esta reunião.' }}
                 </p>
             </div>
 

@@ -1,0 +1,22 @@
+.required {
+    color: #dc2626;
+    font-weight: 800;
+}
+
+.form-error-alert {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    border-radius: 14px;
+    padding: 12px 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.is-invalid {
+    border-color: #dc2626 !important;
+    background: #fff7f7;
+}

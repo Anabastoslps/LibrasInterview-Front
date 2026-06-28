@@ -20,10 +20,15 @@ export class Agendar implements OnInit {
   entrevistaId?: number;
   modoEdicao = false;
 
+  titulo = '';
+  descricao = '';
   entrevistadorId = '';
   candidatoId = '';
   data = '';
   hora = '';
+
+  mensagemErro = '';
+  formularioEnviado = false;
 
   constructor(
     private entrevistaService: EntrevistaService,
@@ -31,7 +36,7 @@ export class Agendar implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -64,13 +69,19 @@ export class Agendar implements OnInit {
   carregarEntrevista(id: number): void {
     this.entrevistaService.obterPorId(id).subscribe({
       next: (entrevista) => {
+        this.titulo = entrevista.titulo ?? '';
+        this.descricao = entrevista.descricao ?? '';
+
         this.entrevistadorId = String(entrevista.entrevistadorId);
         this.candidatoId = String(entrevista.candidatoId);
 
         const dataHora = new Date(entrevista.dataHora);
 
-        this.data = dataHora.toISOString().substring(0, 10);
-        this.hora = dataHora.toTimeString().substring(0, 5);
+        this.data = dataHora.toLocaleDateString('en-CA');
+        this.hora = dataHora.toLocaleTimeString('pt-BR', {
+          hour: '2-digit',
+          minute: '2-digit'
+        });
 
         this.cdr.detectChanges();
       },
@@ -81,10 +92,20 @@ export class Agendar implements OnInit {
   }
 
   salvarEntrevista(): void {
+    this.formularioEnviado = true;
+    this.mensagemErro = '';
+
+    if (!this.titulo || !this.entrevistadorId || !this.candidatoId || !this.data || !this.hora) {
+      this.mensagemErro = 'Preencha todos os campos obrigatórios.';
+      return;
+    }
+
     const request: EntrevistaRequest = {
+      titulo: this.titulo,
+      descricao: this.descricao,
       entrevistadorId: Number(this.entrevistadorId),
       candidatoId: Number(this.candidatoId),
-      dataHora: `${this.data}T${this.hora}:00Z`
+      dataHora: `${this.data}T${this.hora}:00-03:00`
     };
 
     if (this.modoEdicao && this.entrevistaId) {
@@ -93,7 +114,11 @@ export class Agendar implements OnInit {
           this.router.navigate(['/dashboard']);
         },
         error: (erro) => {
-          alert(erro.error?.mensagem ?? 'Erro ao editar entrevista');
+          this.mensagemErro =
+            erro.error?.message ||
+            erro.error?.mensagem ||
+            erro.error ||
+            'Erro ao editar reunião';
         }
       });
 
@@ -105,7 +130,11 @@ export class Agendar implements OnInit {
         this.router.navigate(['/dashboard']);
       },
       error: (erro) => {
-        alert(erro.error?.mensagem ?? 'Erro ao agendar entrevista');
+        this.mensagemErro =
+          erro.error?.message ||
+          erro.error?.mensagem ||
+          erro.error ||
+          'Erro ao agendar reunião';
       }
     });
   }

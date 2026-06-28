@@ -3,13 +3,23 @@
 
         <div class="page-header mb-4">
             <h1 class="page-title">Histórico</h1>
-        
+
             <p class="page-subtitle">
-                Entrevistas concluídas e gravações.
+                Reuniões concluídas e gravações.
             </p>
         </div>
 
-        <div class="history-card">
+        <div class="app-card mt-4">
+
+            <div class="app-card-header">
+
+                <h2>Reuniões realizadas</h2>
+
+                <a routerLink="/dashboard">
+                    Voltar ao dashboard
+                </a>
+
+            </div>
 
             <div class="table-responsive">
 
@@ -20,19 +30,19 @@
                             <th>Título</th>
                             <th>Data</th>
                             <th>Participantes</th>
-                            <th>Duração</th>
+                            <th>Status</th>
                             <th class="text-end">Ações</th>
                         </tr>
                     </thead>
 
                     <tbody>
 
-                        @for (entrevista of entrevistas; track entrevista.id) {
+                        @for (entrevista of entrevistasRealizadas(); track entrevista.id) {
 
                         <tr>
 
                             <td>
-                                <strong>Entrevista #{{ entrevista.id }}</strong>
+                                <strong>{{ entrevista.titulo || 'Reunião sem título' }}</strong>
                             </td>
 
                             <td>
@@ -40,30 +50,46 @@
                             </td>
 
                             <td>
-                                {{ entrevista.entrevistadorNome }}
-                                ×
-                                {{ entrevista.candidatoNome }}
+                                <strong>
+                                    {{ entrevista.entrevistadorNome }}
+                                    ×
+                                    {{ entrevista.candidatoNome }}
+                                </strong>
                             </td>
 
-                            <td>--</td>
+                            <td>
+                                <span class="badge-status success">
+                                    {{ obterStatusReuniao(entrevista.dataHora, entrevista.status) }}
+                                </span>
+                            </td>
 
-                            <td class="text-end">
+                            <td>
 
-                                <button class="btn-action">
-                                    <i class="bi bi-file-earmark-text"></i>
-                                    Transcrição
-                                </button>
+                                <div class="app-actions">
 
-                                <button class="btn-action">
-                                    <i class="bi bi-play-circle"></i>
-                                    Gravação
-                                </button>
+                                    <button type="button" class="app-btn app-btn-secondary app-btn-sm">
 
-                                <button class="btn-export" aria-label="Exportar PDF">
+                                        <i class="bi bi-file-earmark-text"></i>
+                                        Transcrição
 
-                                    <i class="bi bi-download"></i>
+                                    </button>
 
-                                </button>
+                                    <button type="button" class="app-btn app-btn-secondary app-btn-sm">
+
+                                        <i class="bi bi-play-circle"></i>
+                                        Gravação
+
+                                    </button>
+
+                                    <button type="button" class="app-btn app-btn-primary app-btn-sm"
+                                        aria-label="Exportar PDF">
+
+                                        <i class="bi bi-download"></i>
+                                        Exportar
+
+                                    </button>
+
+                                </div>
 
                             </td>
 
@@ -74,9 +100,7 @@
                         <tr>
 
                             <td colspan="5" class="text-center py-4">
-
-                                Nenhuma entrevista encontrada.
-
+                                Nenhuma reunião realizada.
                             </td>
 
                         </tr>
@@ -86,14 +110,6 @@
                     </tbody>
 
                 </table>
-
-            </div>
-
-            <div class="history-footer">
-
-                <a routerLink="/dashboard">
-                    Voltar ao dashboard
-                </a>
 
             </div>
 
