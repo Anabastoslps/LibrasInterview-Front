@@ -9,19 +9,17 @@
             </span>
 
             <div>
+                <h5 class="mb-0">
+                    {{ entrevista?.titulo || 'Sala da reunião' }}
+                </h5>
 
-            <h5 class="mb-0">
-                {{ entrevista?.titulo || 'Sala da reunião' }}
-            </h5>
-            
-            <small>
-                {{ entrevista?.entrevistadorNome }}
-                ×
-                {{ entrevista?.candidatoNome }}
-                •
-                {{ entrevista?.status }}
-            </small>
-
+                <small>
+                    {{ entrevista?.entrevistadorNome }}
+                    ×
+                    {{ entrevista?.candidatoNome }}
+                    •
+                    {{ entrevista?.status }}
+                </small>
             </div>
 
         </div>
@@ -54,7 +52,7 @@
 
                 </div>
 
-                <div class="video-tile">
+                <div class="video-tile" [class.camera-off]="!cam">
 
                     <div class="avatar-circle">
                         {{ obterIniciais(entrevista?.candidatoNome) }}
@@ -81,9 +79,18 @@
 
             </div>
 
+            <div class="caption-bar">
+                <i class="bi bi-badge-cc"></i>
+
+                <p>
+                    <strong>{{ ultimaTranscricao()?.autor || 'Legenda' }}:</strong>
+                    {{ ultimaTranscricao()?.texto || 'Aguardando fala dos participantes...' }}
+                </p>
+            </div>
+
             <div class="room-description">
                 <i class="bi bi-info-circle"></i>
-            
+
                 <p>
                     {{ entrevista?.descricao || 'Nenhuma descrição informada para esta reunião.' }}
                 </p>
@@ -121,49 +128,29 @@
 
                 <div class="transcript-list">
 
-                    <div class="transcript-item interviewer">
+                    @for (item of transcricoes; track $index) {
+
+                    <div class="transcript-item">
+
                         <div>
-                            <strong>Entrevistador</strong>
-                            <span>00:00</span>
+                            <strong>{{ item.autor }}</strong>
+                            <span>{{ item.horario }}</span>
                         </div>
 
-                        <p>Olá! Fale um pouco sobre a sua experiência.</p>
+                        <p>{{ item.texto }}</p>
+
                     </div>
 
-                    <div class="transcript-item candidate">
-                        <div>
-                            <strong>Candidato</strong>
-                            <span>00:15</span>
-                        </div>
-
-                        <p>Tenho três anos de experiência com .NET e Angular.</p>
-                    </div>
-
-                    <div class="transcript-item avatar">
-                        <div>
-                            <strong>Avatar Libras</strong>
-                            <span>00:30</span>
-                        </div>
-
-                        <p>Tradução em Libras sendo executada pelo avatar.</p>
-                    </div>
-
-                    <div class="transcript-item interviewer">
-                        <div>
-                            <strong>Entrevistador</strong>
-                            <span>00:42</span>
-                        </div>
-
-                        <p>Ótimo. Pode descrever um projeto recente?</p>
-                    </div>
+                    }
 
                 </div>
 
                 <div class="chat-input">
 
-                    <input type="text" placeholder="Enviar mensagem…" />
+                    <input type="text" placeholder="Enviar mensagem..." [(ngModel)]="novaMensagem"
+                        (keyup.enter)="enviarMensagem()" />
 
-                    <button>
+                    <button type="button" (click)="enviarMensagem()">
                         <i class="bi bi-send"></i>
                     </button>
 
@@ -177,7 +164,7 @@
 
     <footer class="room-controls">
 
-        <button class="control-btn" (click)="toggleMic()">
+        <button class="control-btn" [class.off]="!mic" (click)="toggleMic()">
 
             @if (mic) {
             <i class="bi bi-mic-fill"></i>
@@ -187,7 +174,7 @@
 
         </button>
 
-        <button class="control-btn" (click)="toggleCam()">
+        <button class="control-btn" [class.off]="!cam" (click)="toggleCam()">
 
             @if (cam) {
             <i class="bi bi-camera-video-fill"></i>
@@ -201,10 +188,8 @@
             <i class="bi bi-display"></i>
         </button>
 
-        <button class="control-btn record" (click)="toggleRecording()">
-
+        <button class="control-btn record" [class.off]="!recording" (click)="toggleRecording()">
             <i class="bi bi-record-circle"></i>
-
         </button>
 
         <button class="control-btn">
@@ -212,10 +197,8 @@
         </button>
 
         <a routerLink="/dashboard" class="end-call-btn">
-
             <i class="bi bi-telephone-x-fill"></i>
             Encerrar
-
         </a>
 
     </footer>

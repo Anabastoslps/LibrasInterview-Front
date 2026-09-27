@@ -413,3 +413,13 @@
     margin: 0;
     line-height: 1.4;
 }
+
+.control-btn.off {
+    background: rgba(250, 175, 144, 0.18);
+    color: #faaf90;
+}
+
+.video-tile.camera-off {
+    background: #111827;
+    border: 1px dashed rgba(250, 175, 144, 0.35);
+}
